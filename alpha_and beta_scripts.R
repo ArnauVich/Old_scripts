@@ -1,5 +1,6 @@
 #######create pcoa_plot##################### 
-
+library (ggplot2)
+library (reshape2)
 pcs<-read.table ("./unweighted_unifrac_pc.txt", header=TRUE, sep="\t", row.names=1, stringsAsFactor=FALSE)
 map<-read.table ("./mapping.txt", header=TRUE, sep="\t", row.names=1, stringsAsFactor=FALSE)
 pc3<-pcs[,1:3]
