@@ -1,1 +1,1 @@
-# Collection of small scripts
+# Collection of scripts
