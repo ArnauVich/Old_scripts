@@ -8,10 +8,9 @@
 
 ## USAGE ##
 
-# bash opticall_format_GSA_v2.sh -i $input -s 1 -a 11 -b 12 -c 20 -x 19 -A 30 -B 31
+# bash opticall_format_GSA_v2.sh -i $input -s 1 -a 23 -c 20 -x 19 -A 30 -B 31
 # s => column containing snps name
-# a => column containing allele 1
-# b => column containing allele 2
+# a => column containing allele, p.e [A/G]
 # c => column containing snp position
 # x => column containing chromosome 
 # A => column containing illumina norm. intensity for allele 1
@@ -23,7 +22,7 @@ while getopts ":i:s:a:b:c:x:A:B:" opt; do
     i) input=$OPTARG ;;
     s) my_snp=$OPTARG ;;
     a) alleles=$OPTARG ;;
-    b) alleles2=$OPTARG ;;
+    #b) alleles2=$OPTARG ;;
     c) coor=$OPTARG ;;
     x) chr=$OPTARG ;;
     A) intA=$OPTARG ;;
@@ -41,7 +40,7 @@ for a in *tmp;
     sid=${a%.tmp} 
     if [ "$flag" -eq 1 ]
         then
-            less "$a" | awk -F "\t" -v name=$sid -v chr=$chr -v al2=$alleles2 -v snp=$my_snp -v al=$alleles -v c=$coor -v A=$intA -v B=$intB 'BEGIN { print "Chr" "\t" "SNP" "\t" "Coor" "\t" "Alleles" "\t" name "A" "\t" name "B" }{ print $chr "\t" $snp "\t" $c "\t" $al $al2 "\t" $A "\t" $B}' > info
+            less "$a" | awk -F "\t" -v name=$sid -v chr=$chr -v snp=$my_snp -v al=$alleles -v c=$coor -v A=$intA -v B=$intB 'BEGIN { print "Chr" "\t" "SNP" "\t" "Coor" "\t" "Alleles" "\t" name "A" "\t" name "B" }{ print $chr "\t" $snp "\t" $c "\t" substr($al,2,1) substr($al,4,1) "\t" $A "\t" $B}' > info
             flag=2
 # keep intensities per sample
     else
