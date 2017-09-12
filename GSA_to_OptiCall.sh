@@ -17,7 +17,7 @@
 # B => column containing illumina norm. intensity for allele 2
 
 #Get command line options
-while getopts ":i:s:a:b:c:x:A:B:" opt; do
+while getopts ":i:s:a:c:x:A:B:" opt; do
   case "$opt" in
     i) input=$OPTARG ;;
     s) my_snp=$OPTARG ;;
