@@ -45,7 +45,7 @@ for a in *tmp;
 # keep intensities per sample
     else
         echo $sid
-        less "$a" | awk -F "\t" -v name=$sid -v chr=$chr -v al2=$alleles2 -v snp=$my_snp -v al=$alleles -v c=$coor -v A=$intA -v B=$intB 'BEGIN { print  name "A" "\t" name "B" }{ print  $A "\t" $B}' > "$a".tmp2
+        less "$a" | awk -F "\t" -v name=$sid -v chr=$chr -v snp=$my_snp -v al=$alleles -v c=$coor -v A=$intA -v B=$intB 'BEGIN { print  name "A" "\t" name "B" }{ print  $A "\t" $B}' > "$a".tmp2
     fi
 done
 # Paste all intensities and paste snp info with the merged intensities 
