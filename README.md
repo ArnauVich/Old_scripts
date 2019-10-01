@@ -1,1 +1,1 @@
-# Collection of scripts
+# Collection of scripts for metagenomics analyses
